@@ -1,16 +1,57 @@
-# KNN：
- 类别划分：有监督
- 
- 算法思想：通过计算预测数据与已知数据的欧式距离（亦可使用其他距离进行衡量），选出前K个最近距离的类别，作为预测数据的类别。
- 以鸢尾花为例：
- 测试数据集中有[5.9,3.0,4.2,1.5]的测试样本，计算该样本到测试数据集中某样本[6,3,4,1.5]欧式距离:
-     
-     d = sqrt{(5.9-6)^2+(3-3)^2+(4.2-2)^2+(1.5-1.5)^2}
- 
- 计算出预测样本到每个测试数据集的距离，选出前K个距离最小的样本的label，取label中出现最多的类别作为预测样本的类别。
- 
- 优点：对异常值不敏感，无数据输入假定。
- 
- 缺点：计算量大复杂度高。
- 
- 以鸢尾花数据集为例进行算法实现与测试。
+# coding: utf-8
+
+# # KNN：
+#  类别划分：有监督
+#  
+#  算法思想：通过计算预测数据与已知数据的欧式距离（亦可使用其他距离进行衡量），选出前K个最近距离的类别，作为预测数据的类别。
+#  以鸢尾花为例：
+#  测试数据集中有[5.9,3.0,4.2,1.5]的测试样本，计算该样本到测试数据集中某样本[6,3,4,1.5]欧式距离:
+#      
+#      d = sqrt{(5.9-6)^2+(3-3)^2+(4.2-2)^2+(1.5-1.5)^2}
+#  
+#  计算出预测样本到每个测试数据集的距离，选出前K个距离最小的样本的label，取label中出现最多的类别作为预测样本的类别。
+#  通过矩阵乘法简化计算。
+#  
+#  优点：对异常值不敏感，无数据输入假定。
+#  
+#  缺点：计算量大复杂度高。
+#  
+#  以鸢尾花数据集为例进行算法实现与测试。
+
+# In[1]:
+
+import numpy as np
+import pandas as pd
+
+
+# In[2]:
+
+train_data = pd.read_csv("F:\Datamining\ML\KNN\data\iris_training.csv")[:5]
+test_data = pd.read_csv(r"F:\Datamining\ML\KNN\data\iris_test.csv")[:2]
+
+
+# In[3]:
+
+train_data
+
+
+# In[4]:
+
+tile_train_data = np.tile(train_data,(test_data.shape[0],1))
+tile_train_data
+
+
+# In[5]:
+
+#tile_test_data = np.repeat(test_data,2,axis=1)
+#tile_test_data
+test_data
+
+
+# In[6]:
+
+test_data = np.repeat(test_data.values,5,axis=0)
+test_data
+
+
+# In[ ]:
