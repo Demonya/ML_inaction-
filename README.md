@@ -1,3 +1,7 @@
+*.js linguist-language=python
+*.css linguist-language=python
+*.html linguist-language=python
+
 # ML_inaction
 机器学习实战代码：\
 代码借鉴机器学习实战，在其基础上部分进行了调整，对于书上报错的代码进行了调整。用于理解算法与代码练习\
