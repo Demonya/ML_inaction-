@@ -1,5 +1,4 @@
 
-*.KNN linguist-language=Python
 
 # coding: utf-8
 
