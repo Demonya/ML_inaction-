@@ -8,10 +8,10 @@
 5）逻辑回归\
 6）支持向量机\
 7）Adaboost\
-8）线性回归
-9）树回归
-10）K均值聚类
-11）Apriori
-12）FP-growth
-13）PCA
+8）线性回归\
+9）树回归\
+10）K均值聚类\
+11）Apriori\
+12）FP-growth\
+13）PCA\
 14）SVD
