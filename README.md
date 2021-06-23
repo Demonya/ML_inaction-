@@ -1,6 +1,3 @@
-*.js linguist-language=python
-*.css linguist-language=python
-*.html linguist-language=python
 
 # ML_inaction
 机器学习实战代码：\
