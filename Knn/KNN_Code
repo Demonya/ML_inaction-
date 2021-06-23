@@ -1,5 +1,6 @@
 
 *.KNN linguist-language=Python
+
 # coding: utf-8
 
 # # KNN：
@@ -24,26 +25,51 @@
 
 import numpy as np
 import pandas as pd
+import operator
 
 
 # In[2]:
 
-train_data = pd.read_csv("F:\Datamining\ML\KNN\data\iris_training.csv")[10:15]
-test_data = pd.read_csv(r"F:\Datamining\ML\KNN\data\iris_test.csv")[:2]
+train_data = pd.read_csv("F:\Datamining\ML\KNN\data\iris_training.csv")
+test_data = pd.read_csv(r"F:\Datamining\ML\KNN\data\iris_test.csv")[10:11]
 
 
 # In[3]:
 
-train_data
+# train_data
 
 
 # In[4]:
 
-test_data
+# train_data.values[:,4:5].tolist()
 
 
 # In[5]:
+# 机器学习实战原代码，python3个别有调整，输入仅支持一个样本
+def classify(inX,dataSet,labels,k):
+    dataSetSize = dataSet.shape[0]
+    diffMat = np.tile(inX,(dataSetSize,1)) - dataSet
+    sqDiffMat = diffMat**2
+    sqDistance = sqDiffMat.sum(axis=1)
+    distances = sqDistance**0.5
+    sortedDistIndicies = distances.argsort()
+    classCount = {}
+    for i in range(k):
+        votelabel = labels[sortedDistIndicies[i]]
+#         print(int(votelabel))
+        classCount[int(votelabel)] = classCount.get(int(votelabel),0) + 1
+    sortedClassCount = sorted(classCount.items(),key = operator.itemgetter(1),reverse = True) #python3 字典iteritems 变为items
+    return sortedClassCount[0][0]
 
+
+# In[6]:
+
+a= classify(test_data.values[:,:4],train_data.values[:,:4],train_data.values[:,4:5],30)
+a
+
+
+# In[7]:
+#调整输入支持多个样本
 def clac_distance(train_data,test_data,k):
     #label = 
     tile_train_data = np.tile(train_data,(test_data.shape[0],1))
@@ -59,8 +85,11 @@ def clac_distance(train_data,test_data,k):
     return res
 
 
-# In[6]:
+# In[8]:
 
-res = clac_distance(train_data,test_data,3)
+res = clac_distance(train_data,test_data,60)
 res
+
+
+
 
