@@ -30,7 +30,7 @@ import operator
 # In[2]:
 
 train_data = pd.read_csv("F:\Datamining\ML\KNN\data\iris_training.csv")
-test_data = pd.read_csv(r"F:\Datamining\ML\KNN\data\iris_test.csv")[10:11]
+test_data = pd.read_csv(r"F:\Datamining\ML\KNN\data\iris_test.csv")[10:11] #仅取一个测试样例，是因为机器学习实战代码输入仅支持一个样本输入。
 
 
 # In[3]:
